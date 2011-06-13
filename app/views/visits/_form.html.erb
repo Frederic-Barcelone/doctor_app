@@ -1,0 +1,42 @@
+<%= simple_form_for @visit do |f| %>
+    <div style="display:inline-block;">
+      <div class='left'>
+        <fieldset>
+          <legend>Appointment info</legend>
+          <p>
+            <%= f.label :date %><br/>
+            <%= f.datetime_select :date %>
+          </p>
+
+          <p>
+            <%= f.input :complaint %>
+          </p>
+
+          <p>
+            <%= f.association :doctor, :collection => Doctor.all.map { |d| [d.email, d.id] },
+                              :prompt => "Please select a patient for this appointment" %>
+          </p>
+
+          <p>
+            <%= f.association :patient, :collection => Patient.all.map { |p| [p.full_name, p.id] },
+                              :prompt => "Choose a doctor for new appointment" %>
+          </p>
+        </fieldset>
+      </div>
+      <div class="right">
+        <fieldset>
+          <legend>Details</legend>
+          <p>
+            <%= f.label :diagnosis %><br/>
+            <%= f.text_area :diagnosis, :rows => 5 %>
+          </p>
+
+          <p>
+            <%= f.label :observation %><br/>
+            <%= f.text_area :observation, :rows => 5 %>
+          </p>
+        </fieldset>
+      </div>
+    </div>
+    <p><%= button_submit_tag %></p>
+<% end %>

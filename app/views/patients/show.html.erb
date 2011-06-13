@@ -1,0 +1,74 @@
+<% title "Patient" %>
+<div class="left">
+  <p>
+    <strong>First Name:</strong>
+    <%= @patient.first_name %>
+  </p>
+
+  <p>
+    <strong>Middle Name:</strong>
+    <%= @patient.middle_name %>
+  </p>
+
+  <p>
+    <strong>Last Name:</strong>
+    <%= @patient.last_name %>
+  </p>
+
+  <p>
+    <strong>Birthdate:</strong>
+    <%= @patient.birthdate %>
+  </p>
+
+  <p>
+    <strong>Phone:</strong>
+    <%= @patient.phone %>
+  </p>
+
+  <p>
+    <strong>Address:</strong>
+    <%= @patient.address %>
+  </p>
+
+  <p>
+    <strong>Gender:</strong>
+    <%= @patient.female ? "Female" : "Male" %>
+  </p>
+
+  <p>
+    <strong>Bloodgroup:</strong>
+    <%= @patient.bloodgroup %>
+  </p>
+</div>
+<div class="right">
+  <p>
+    <strong>Allergies</strong>
+    <%= @patient.allergies %>
+  </p>
+
+  <p>
+    <strong>Social History</strong>
+    <%= @patient.social_history %>
+  </p>
+
+  <p>
+    <strong>Medical history</strong>
+    <%= @patient.medical_history %>
+  </p>
+
+  <p>
+    <strong>Family History</strong>
+    <%= @patient.family_history %>
+  </p>
+
+</div>
+
+
+<%= content_for :buttons do %>
+    <%= big_add_button_link_to "Give meds", new_med_path(:patient => @patient) %>
+    <%= big_calendar_button_link_to "New appointment", new_visit_path(:patient => @patient) %>
+
+    <%= big_edit_button_link_to "Edit", edit_patient_path(@patient) %>
+    <%= big_remove_negative_button_link_to "Delete", @patient, :confirm => 'Are you sure?', :method => :delete %>
+
+<% end %>

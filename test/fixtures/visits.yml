@@ -1,0 +1,15 @@
+one:
+  date: 2011-06-12 20:53:18
+  complaint: MyString
+  diagnosis: MyText
+  observation: MyText
+  doctor_id: 1
+  patient_id: 1
+
+two:
+  date: 2011-06-12 20:53:18
+  complaint: MyString
+  diagnosis: MyText
+  observation: MyText
+  doctor_id: 1
+  patient_id: 1

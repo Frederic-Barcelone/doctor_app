@@ -1,0 +1,62 @@
+<%= simple_form_for @patient do |f| %>
+    <div style="display:inline-block">
+      <div class='left'>
+        <fieldset>
+          <legend>Patient Record Info</legend>
+          <p>
+            <%= f.input :last_name %>
+
+            <%= f.input :first_name %>
+
+            <%= f.input :middle_name %>
+          </p>
+
+          <p>
+            <%= f.input :birthdate, :discard_hour => true %>
+          </p>
+
+          <p>
+            <%= f.input :phone %>
+            <%= f.input :address %>
+          </p>
+
+          <div class='select'>
+            <p>
+              <%= f.input :female, :collection => [["Female", 1], ["Male", 0]] %>
+            </p>
+
+            <p>
+              <%= f.input :bloodgroup, :collection => Patient::BLOOD, :prompt => "Choose blood type" %>
+            </p>
+          </div>
+        </fieldset>
+      </div>
+      <div class='right'>
+        <fieldset>
+          <legend>Patient History</legend>
+          <%= f.fields_for :history, @history do |h| %>
+              <p>
+                <%= h.label :allergies %><br/>
+                <%= h.text_area :allergies, :rows => 4 %>
+              </p>
+
+              <p>
+                <%= h.label :social, "Social History" %><br/>
+                <%= h.text_area :social, :rows => 4 %>
+              </p>
+
+              <p>
+                <%= h.label :medical, "Medical History" %><br/>
+                <%= h.text_area :medical, :rows => 4 %>
+              </p>
+
+              <p>
+                <%= h.label :family, "Family History" %><br/>
+                <%= h.text_area :family, :rows => 4 %>
+              </p>
+          <% end %>
+        </fieldset>
+      </div>
+    </div>
+    <p><%= button_submit_tag "Save patient" %></p>
+<% end %>

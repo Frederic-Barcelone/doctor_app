@@ -1,0 +1,13 @@
+one:
+  patient_id: 1
+  allergies: MyText
+  social: MyText
+  medical: MyText
+  family: MyText
+
+two:
+  patient_id: 1
+  allergies: MyText
+  social: MyText
+  medical: MyText
+  family: MyText

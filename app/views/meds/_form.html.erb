@@ -1,0 +1,32 @@
+<%= simple_form_for @med do |f| %>
+    <div style="display:inline-block">
+      <div class="left">
+        <fieldset>
+          <legend>Prescription info</legend>
+          <p><%= f.input :medication %></p>
+
+          <p><%= f.input :dose %></p>
+
+          <p><%= f.input :rote %></p>
+
+          <p><%= f.input :frequency %></p>
+        </fieldset>
+      </div>
+      <div class="right">
+        <fieldset>
+          <legend>Person info</legend>
+          <p><%= f.input :date, :discard_hour => true %></p>
+
+          <p><%= f.association :patient,
+                               :collection => Patient.all.map { |p| [p.full_name, p.id] },
+                               :prompt => "Select a patient" %></p>
+
+          <p>
+            <%= f.association :doctor,
+                              :collection => Doctor.all.map { |d| [d.email, d.id] },
+                              :prompt => "Select doctor" %></p>
+        </fieldset>
+      </div>
+    </div>
+    <%= button_submit_tag %>
+<% end %>

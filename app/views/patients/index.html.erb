@@ -1,0 +1,31 @@
+<% title "Patients" %>
+
+<%= content_for :search do %>
+    <%= form_for @search do |f| %>
+        <%= f.text_field :last_name_contains, :class => "big_input" %>
+        <%= big_button_submit_tag "Search" %>
+    <% end %>
+<% end %>
+
+<%= content_for :buttons do %>
+    <%= big_add_button_link_to "New Patient", new_patient_path %>
+<% end %>
+
+<table>
+  <tr>
+    <th><%= sort_link @search, :last_name, "Sort by last name" %></th>
+    <th><%= sort_link @search, :birthdate, "Sort by birthday" %></th>
+    <th></th>
+  </tr>
+  <% for patient in @patients %>
+      <tr>
+        <td><%= link_to patient.full_name, patient %></td>
+        <td><%= patient.birthdate.strftime("%d - %m - %Y") %></td>
+        <td><%= button_group do %>
+              <%= edit_button_link_to "Edit", edit_patient_path(patient) %>
+              <%= remove_negative_button_link_to "Delete", patient, :confirm => 'Are you sure?', :method => :delete %></td>
+          <% end %>
+          </tr>
+  <% end %>
+</table>
+

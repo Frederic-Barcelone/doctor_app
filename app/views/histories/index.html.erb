@@ -1,0 +1,25 @@
+<% title "Histories" %>
+
+<table>
+  <tr>
+    <th>Patient</th>
+    <th>Allergies</th>
+    <th>Social</th>
+    <th>Medical</th>
+    <th>Family</th>
+  </tr>
+  <% for history in @histories %>
+    <tr>
+      <td><%= history.patient_id %></td>
+      <td><%= history.allergies %></td>
+      <td><%= history.social %></td>
+      <td><%= history.medical %></td>
+      <td><%= history.family %></td>
+      <td><%= link_to "Show", history %></td>
+      <td><%= link_to "Edit", edit_history_path(history) %></td>
+      <td><%= link_to "Destroy", history, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New History", new_history_path %></p>

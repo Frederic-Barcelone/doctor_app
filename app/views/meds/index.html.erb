@@ -1,0 +1,30 @@
+<% title "Prescriptions" %>
+<%= content_for :search do %>
+    <%= form_for @search do |f| %>
+        <%= f.text_field :medication_contains, :class => "big_input" %>
+        <%= big_button_submit_tag "Search" %>
+    <% end %>
+<% end %>
+<%= content_for :buttons do %>
+    <%= big_add_button_link_to "New Prescription", new_med_path %>
+<% end %>
+<table>
+  <tr>
+    <th><%= sort_link @search, :medication, "Sort by medication" %></th>
+    <th><%= sort_link @search, :date, "Sort by date" %></th>
+    <th><%= sort_link @search, :patient_id, "Sort by patient" %></th>
+  </tr>
+  <% for med in @meds %>
+      <tr>
+        <td><%= link_to med.medication, med %></td>
+        <td><%= med.date %></td>
+        <td><%= link_to med.patient.last_name, patient_path(med.patient_id) %></td>
+        <td><%= button_group do %>
+              <%= edit_button_link_to "Edit", edit_med_path(med) %>
+              <%= remove_negative_button_link_to "Delete", med, :confirm => 'Are you sure?', :method => :delete %></td>
+          <% end %>
+          </tr>
+  <% end %>
+</table>
+
+

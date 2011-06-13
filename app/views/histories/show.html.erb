@@ -1,0 +1,28 @@
+<% title "History" %>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @history.patient_id %>
+</p>
+<p>
+  <strong>Allergies:</strong>
+  <%= @history.allergies %>
+</p>
+<p>
+  <strong>Social:</strong>
+  <%= @history.social %>
+</p>
+<p>
+  <strong>Medical:</strong>
+  <%= @history.medical %>
+</p>
+<p>
+  <strong>Family:</strong>
+  <%= @history.family %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_history_path(@history) %> |
+  <%= link_to "Destroy", @history, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", histories_path %>
+</p>

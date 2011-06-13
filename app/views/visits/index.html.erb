@@ -1,0 +1,31 @@
+<% title "Visits" %>
+<%= content_for :search do %>
+    <%= form_for @search do |f| %>
+        <%= f.text_field :complaint_contains, :class => "big_input" %>
+        <%= big_button_submit_tag "Search" %>
+    <% end %>
+<% end %>
+
+<%= content_for :buttons do %>
+    <%= big_add_button_link_to "New Appointment", new_visit_path %>
+<% end %>
+
+<table>
+  <tr>
+    <th><%= sort_link @search, :date, "Sort by date" %></th>
+    <th>Complaint</th>
+    <th><%= sort_link @search, :patient_id, "Group by patient" %></th>
+  </tr>
+  <% for visit in @visits %>
+      <tr>
+        <td><%= visit.date.strftime("%d/%m/%Y - %H:%M") %></td>
+        <td><%= visit.complaint %></td>
+        <td><%= link_to visit.patient.last_name, patient_path(visit.patient_id) %></td>
+        <td><%= button_group do %>
+              <%= edit_button_link_to "Show", edit_visit_path(visit) %>
+              <%= remove_negative_button_link_to "Delete", visit, :confirm => 'Are you sure?', :method => :delete %>
+          <% end %></td>
+      </tr>
+  <% end %>
+</table>
+

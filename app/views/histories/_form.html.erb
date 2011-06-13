@@ -1,0 +1,24 @@
+<%= form_for @history do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :patient_id %><br />
+    <%= f.text_field :patient_id %>
+  </p>
+  <p>
+    <%= f.label :allergies %><br />
+<%= f.text_area :allergies %>
+  </p>
+  <p>
+<%= f.label :social %><br />
+<%= f.text_area :social %>
+  </p>
+  <p>
+<%= f.label :medical %><br />
+<%= f.text_area :medical %>
+  </p>
+  <p>
+<%= f.label :family %><br />
+<%= f.text_area :family %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

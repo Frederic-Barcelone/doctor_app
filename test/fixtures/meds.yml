@@ -1,0 +1,17 @@
+one:
+  medication: MyString
+  dose: MyString
+  rote: MyString
+  frequency: MyString
+  date: 2011-06-12 20:56:31
+  patient_id: 1
+  doctor_id: 1
+
+two:
+  medication: MyString
+  dose: MyString
+  rote: MyString
+  frequency: MyString
+  date: 2011-06-12 20:56:31
+  patient_id: 1
+  doctor_id: 1

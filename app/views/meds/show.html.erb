@@ -1,0 +1,36 @@
+<% title "Med" %>
+
+<p>
+  <strong>Medication:</strong>
+  <%= @med.medication %>
+</p>
+<p>
+  <strong>Dose:</strong>
+  <%= @med.dose %>
+</p>
+<p>
+  <strong>Rote:</strong>
+  <%= @med.rote %>
+</p>
+<p>
+  <strong>Frequency:</strong>
+  <%= @med.frequency %>
+</p>
+<p>
+  <strong>Date:</strong>
+  <%= @med.date %>
+</p>
+<p>
+  <strong>Patient:</strong>
+  <%= @med.patient_id %>
+</p>
+<p>
+  <strong>Doctor:</strong>
+  <%= @med.doctor_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_med_path(@med) %> |
+  <%= link_to "Destroy", @med, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", meds_path %>
+</p>
