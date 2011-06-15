@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110612180300) do
+ActiveRecord::Schema.define(:version => 20110615082614) do
 
   create_table "doctors", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20110612180300) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "visit_counter",                         :default => 0
   end
 
   add_index "doctors", ["email"], :name => "index_doctors_on_email", :unique => true
@@ -43,30 +44,29 @@ ActiveRecord::Schema.define(:version => 20110612180300) do
   add_index "histories", ["patient_id"], :name => "index_histories_on_patient_id", :unique => true
 
   create_table "meds", :force => true do |t|
-    t.string   "medication",                                    :null => false
+    t.string   "medication", :null => false
     t.string   "dose"
     t.string   "rote"
     t.string   "frequency"
-    t.datetime "date",       :default => '2011-06-12 18:13:37', :null => false
-    t.integer  "patient_id",                                    :null => false
-    t.integer  "doctor_id",                                     :null => false
+    t.datetime "date",       :null => false
+    t.integer  "patient_id"
+    t.integer  "doctor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "meds", ["medication"], :name => "index_meds_on_medication", :unique => true
-
   create_table "patients", :force => true do |t|
-    t.string   "first_name",  :null => false
-    t.string   "middle_name", :null => false
-    t.string   "last_name",   :null => false
-    t.datetime "birthdate",   :null => false
+    t.string   "first_name",                  :null => false
+    t.string   "middle_name",                 :null => false
+    t.string   "last_name",                   :null => false
+    t.datetime "birthdate",                   :null => false
     t.string   "phone"
     t.string   "address"
-    t.boolean  "female",      :null => false
+    t.boolean  "female",                      :null => false
     t.string   "bloodgroup"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "meds_counter", :default => 0
   end
 
   create_table "visits", :force => true do |t|
@@ -74,13 +74,10 @@ ActiveRecord::Schema.define(:version => 20110612180300) do
     t.string   "complaint",   :null => false
     t.text     "diagnosis",   :null => false
     t.text     "observation"
-    t.integer  "doctor_id",   :null => false
-    t.integer  "patient_id",  :null => false
+    t.integer  "doctor_id"
+    t.integer  "patient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "visits", ["doctor_id"], :name => "index_visits_on_doctor_id", :unique => true
-  add_index "visits", ["patient_id"], :name => "index_visits_on_patient_id", :unique => true
 
 end

@@ -17,7 +17,7 @@ class MedsController < ApplicationController
   def create
     @med = Med.new(params[:med])
     if @med.save
-      redirect_to @med, :notice => "Successfully created med."
+      redirect_to meds_path, :notice => "Successfully created med."
     else
       render :action => 'new'
     end
